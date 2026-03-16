@@ -13,7 +13,7 @@ public class CorsCfg {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("https://drink-shop-ui-mief.vercel.app", "http://localhost:3000")
+                        .allowedOrigins("https://drink-shop-fe.vercel.app", "http://localhost:3000")
                         .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
                         .allowCredentials(true);
