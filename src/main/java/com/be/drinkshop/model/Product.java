@@ -1,0 +1,45 @@
+package com.be.drinkshop.model;
+
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+@Getter
+@Setter
+@Entity
+@Table(name = "product")
+public class Product {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(name = "name")
+    private String name;
+
+    @Column(name = "description")
+    private String description;
+
+    @Column(name = "ingredients")
+    private String ingredients;
+
+    @Column(name = "price")
+    private double price;
+
+    @Column(name = "image_url")
+    private String imageUrl;
+
+    @Column(name = "quantity_sold")
+    private Integer quantitySold = 0;
+
+    @ManyToOne
+    @JoinColumn(name = "category_id")
+    private Category category;
+
+    @ManyToMany(mappedBy = "favoriteProducts")
+    private Set<User> likedByUsers = new HashSet<>();
+}
