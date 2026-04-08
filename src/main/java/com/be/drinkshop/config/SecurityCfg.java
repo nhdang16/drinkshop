@@ -40,6 +40,7 @@ public class SecurityCfg {
                         .accessDeniedHandler((request, response, authException) -> response
                                 .sendError(HttpServletResponse.SC_UNAUTHORIZED, authException.getMessage())))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(
                                 "/api/auth/**",
                                 "/swagger-ui/**", // Cho Swagger UI mới (Spring Boot 3+)
